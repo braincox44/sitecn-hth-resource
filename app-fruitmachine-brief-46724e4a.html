@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水果机 · 快速入口与使用说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f1f3f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            color: #1e2a3a;
+            line-height: 1.5;
+            padding: 2rem 1.2rem;
+        }
+        .page-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉卡片 —— 柔和画幅 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e4e9f0;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .hero-icon {
+            font-size: 3.6rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .hero-card h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b1b2a;
+            margin-bottom: 0.75rem;
+        }
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #4a5b6b;
+            max-width: 580px;
+            margin: 0 auto 1.8rem;
+            border-bottom: 1px dashed #dce2ec;
+            padding-bottom: 1.2rem;
+        }
+        .hero-tagline {
+            font-size: 1rem;
+            background: #f5f8fc;
+            display: inline-block;
+            padding: 0.4rem 1.6rem;
+            border-radius: 40px;
+            border: 1px solid #dee6f0;
+            color: #2b3f54;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+            border: 1px solid #e7ecf3;
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+        .card-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #132433;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3a4c5e;
+            margin-bottom: 0.25rem;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.6rem;
+        }
+        .card li {
+            font-size: 0.9rem;
+            padding: 0.2rem 0;
+            color: #3d556b;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .card li::before {
+            content: "•";
+            color: #8698ad;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 双栏布局：适合人群 + 自然链接段落 */
+        .split-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+        .split-left {
+            flex: 1.3;
+            min-width: 240px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem;
+            border: 1px solid #e7ecf3;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+        }
+        .split-left h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #132433;
+            border-left: 4px solid #3a7abc;
+            padding-left: 0.8rem;
+        }
+        .audience-item {
+            background: #f6f9fe;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            margin: 0.5rem 0.25rem;
+            display: inline-block;
+            font-size: 0.9rem;
+            border: 1px solid #d5dfec;
+        }
+        .split-right {
+            flex: 2;
+            min-width: 240px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem;
+            border: 1px solid #e7ecf3;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+        }
+        .split-right h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #132433;
+        }
+        .split-right p {
+            font-size: 0.98rem;
+            color: #2a3d51;
+            margin-bottom: 1rem;
+        }
+        .split-right a {
+            color: #1a6bb0;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b6c9de;
+            transition: border-color 0.1s;
+        }
+        .split-right a:hover {
+            border-bottom-color: #1a6bb0;
+        }
+
+        /* FAQ 摘要卡片 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e7ecf3;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+            margin-bottom: 2.2rem;
+        }
+        .faq-mini h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #132433;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-item {
+            padding: 0.65rem 0;
+            border-bottom: 1px solid #edf2f8;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            display: block;
+            color: #1d2f41;
+            margin-bottom: 0.25rem;
+        }
+        .faq-a {
+            font-size: 0.92rem;
+            color: #4a617a;
+            padding-left: 0.8rem;
+        }
+
+        /* 底部 */
+        .footnote {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64778b;
+            border-top: 1px solid #dbe2ec;
+            padding-top: 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .hero-card { padding: 2rem 1.2rem; }
+            .hero-card h1 { font-size: 2rem; }
+            .split-section { flex-direction: column; gap: 1.2rem; }
+            .split-left, .split-right { width: 100%; }
+            .card-grid { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 主视觉 -->
+    <div class="hero-card">
+        <span class="hero-icon">🍒</span>
+        <h1>水果机 · 稳定入口</h1>
+        <div class="hero-sub">一个清爽、直接的页面，帮你快速了解「水果机」的用途、场景与使用方式。</div>
+        <span class="hero-tagline">轻量信息卡片 · 一目了然</span>
+    </div>
+
+    <!-- 用途卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <span class="card-icon">🎯</span>
+            <h3>日常娱乐</h3>
+            <p>提供节奏轻快的水果机体验，适合碎片时间放松。界面简洁，无需复杂设定，打开就能玩。</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">📱</span>
+            <h3>跨平台适配</h3>
+            <p>在手机与电脑上均有良好显示，基于标准 Web 技术，无需额外下载。浏览器打开即用。</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🧩</span>
+            <h3>轻量交互</h3>
+            <p>没有多余弹窗或强制步骤，直接呈现核心玩法。适合不喜欢繁琐操作的用户。</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🔐</span>
+            <h3>稳定访问</h3>
+            <p>域名长期维护，访问路径直接。遇到问题可稍后刷新重试，保持稳定连接。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群 + 自然链接段落 -->
+    <div class="split-section">
+        <div class="split-left">
+            <h2>适合人群</h2>
+            <div>
+                <span class="audience-item">日常休闲玩家</span>
+                <span class="audience-item">喜欢经典街机风格的人</span>
+                <span class="audience-item">想快速体验水果机的新手</span>
+                <span class="audience-item">寻找干净入口的轻度用户</span>
+                <span class="audience-item">对视觉干扰敏感的人</span>
+            </div>
+            <p style="margin-top:1.4rem; font-size:0.9rem; color:#45607a;">无论你是第一次接触，还是想换一个清爽的入口，都可以从这里开始。</p>
+        </div>
+        <div class="split-right">
+            <h2>关于这个页面</h2>
+            <p>这个介绍页就是为了给你一个安静的起点。你不必在搜索引擎里翻来翻去，也不用担心点到奇怪的跳转。直接记住：<a href="https://app-fruitmachine.com">水果机</a> 就是那个稳定、直接的去处。</p>
+            <p>很多朋友第一次用的时候，会好奇“到底怎么玩？”——其实很简单。打开页面后，按照界面提示操作即可。整个流程非常直观，基本不需要额外说明。</p>
+            <p>如果你已经在别的地方见过类似的机器，那这里的体验会更干净。没有多余的装饰和干扰，把注意力还给游戏本身。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要卡片 -->
+    <div class="faq-mini">
+        <h3><span>💬</span> 常见疑问摘要</h3>
+        <div class="faq-item">
+            <span class="faq-q">Q：网页加载慢怎么办？</span>
+            <span class="faq-a">先检查网络连接，也可尝试更换浏览器或刷新页面。网站本身轻量，通常很快。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">Q：需要注册或登录吗？</span>
+            <span class="faq-a">不需要。直接打开页面即可使用，没有注册步骤，也没有个人信息收集。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">Q：手机布局正常吗？</span>
+            <span class="faq-a">正常。页面采用响应式设计，手机、平板、电脑都能获得合适的显示效果。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">Q：这个页面是官网吗？</span>
+            <span class="faq-a">这是一个信息引导页，指向的是主站入口。通过上方的 <a href="https://app-fruitmachine.com" style="color:#1a6bb0;text-decoration:underline;">水果机</a> 链接可以直接抵达。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footnote">
+        信息卡片式介绍 · 为你提供一个稳定、清晰的起点
+    </div>
+</div>
+</body>
+</html>
