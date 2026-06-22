@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>857直播 · 再次遇见，持续同行</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1a2a3a;
+            line-height: 1.6;
+            padding: 1.5rem;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
+            box-shadow: 0 12px 28px rgba(0, 80, 80, 0.08);
+            overflow: hidden;
+            padding: 2rem 1.8rem 2.8rem;
+        }
+
+        /* hero 区 */
+        .hero {
+            text-align: center;
+            padding: 1.8rem 0 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #0b3b3b;
+            background: linear-gradient(135deg, #0b5e5e, #248f8f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: #3d6b6b;
+            background: #dff3f3;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            margin-top: 1.2rem;
+            color: #2c4b4b;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 网格卡片区 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 2.2rem 0;
+        }
+
+        .card {
+            background: #f0faf9;
+            border-radius: 20px;
+            padding: 1.3rem 1rem;
+            border: 1px solid #d1ecea;
+            transition: 0.2s ease;
+        }
+
+        .card:hover {
+            background: #e1f5f3;
+            border-color: #79c9c4;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #115252;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card h3::before {
+            content: "●";
+            color: #319b94;
+            font-size: 1rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #2b5555;
+        }
+
+        /* 说明区 */
+        .story {
+            background: #f1f9f9;
+            padding: 1.8rem 1.5rem;
+            border-radius: 24px;
+            margin: 1.8rem 0 2rem;
+            border-left: 5px solid #2a9d8f;
+        }
+
+        .story h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0b4949;
+            margin-bottom: 1rem;
+        }
+
+        .story p {
+            margin-bottom: 0.8rem;
+            color: #1e3f3f;
+        }
+
+        .story a {
+            color: #117a65;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed #3ba99b;
+        }
+
+        .story a:hover {
+            color: #0d5f4f;
+            border-bottom-style: solid;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 0.8rem 0.2rem;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #145252;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #d8f0ed;
+            padding: 0.1rem 1rem;
+            border-radius: 30px;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2efed;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            color: #1b6b5f;
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item span {
+            color: #335a5a;
+            font-size: 0.92rem;
+        }
+
+        /* 底部链接 */
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #d6ebe8;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #487070;
+        }
+
+        .footer-note a {
+            color: #117a65;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-note .muted {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.8rem;
+            color: #6b9494;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.8rem;
+            }
+            .page {
+                padding: 1.2rem 1rem;
+                border-radius: 2rem 2rem 1rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .story {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>又见面了，老朋友</h1>
+        <div class="tagline">收藏 · 回访 · 持续陪伴</div>
+        <p>每一次回到这里，都像推开一扇熟悉的门。<br>不用刻意记住，只要记得常来就好。</p>
+    </div>
+
+    <!-- 优势卡片：网格 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3>收藏即从容</h3>
+            <p>把页面加入书签，下次再来更快。不必费力搜索，一键回到熟悉的地方。</p>
+        </div>
+        <div class="card">
+            <h3>持续更新</h3>
+            <p>内容保持活力，回回有新鲜感。常看常新，总能发现一点小惊喜。</p>
+        </div>
+        <div class="card">
+            <h3>顺手打开</h3>
+            <p>用手机浏览器直接点开，适配顺手，不折腾。随时随地，想聊就聊。</p>
+        </div>
+        <div class="card">
+            <h3>自然节奏</h3>
+            <p>不催不赶，按你自己的频率来。有空就来看看，没空下次再会。</p>
+        </div>
+    </div>
+
+    <!-- 说明区：再次访问与关注 -->
+    <div class="story">
+        <h2>关于「再次访问」这件事</h2>
+        <p>很多人第一次来 <a href="https://m-857ty.com">857直播</a>，是因为恰好遇见。但真正让人安心的，是后来每一次想要回来时，发现它还在，而且变得更好。</p>
+        <p>我们一直觉得，收藏一个页面就像在书里夹一片叶子——不是非要立刻读，而是知道它在。所以如果觉得还不错，不妨把 <a href="https://m-857ty.com">857直播</a> 放进浏览器收藏夹，或者记在备忘录里。下次再想起，不用绕路。</p>
+        <p>持续关注，不需要天天盯着，只要心里有个印象：这里有内容，有人，有真实的声音。节奏由你定，我们只负责保持干净、稳定、好打开的体验。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h2>你可能想问</h2>
+        <div class="faq-item">
+            <strong>为什么我上次看到的内容和这次不一样？</strong>
+            <span>因为一直在更新呀。每次来都可能看到新东西，这也是保持回访的小乐趣。如果特别喜欢某样内容，不妨收藏或截图。</span>
+        </div>
+        <div class="faq-item">
+            <strong>我忘记网址了，怎么才能再找到？</strong>
+            <span>最直接的方法是现在就把页面加入书签（收藏夹）。或者记住关键词 <a href="https://m-857ty.com" style="color:#117a65; text-decoration:underline;">857直播</a>，通过搜索也能回来。</span>
+        </div>
+        <div class="faq-item">
+            <strong>手机上看方便吗？</strong>
+            <span>页面针对手机做了适配，字体、间距、按钮都很顺手。不管是用浏览器还是分享链接，打开体验都自然流畅。</span>
+        </div>
+        <div class="faq-item">
+            <strong>需要注册或者登录吗？</strong>
+            <span>完全不需要。直接访问就能浏览内容，不设门槛。你可以像串门一样，来去自由。</span>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-note">
+        <p>随时回来 · <a href="https://m-857ty.com">857直播</a> · 常伴常新</p>
+        <span class="muted">不用记住，只要记得就好。</span>
+    </div>
+</div>
+</body>
+</html>
